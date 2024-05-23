@@ -105,7 +105,7 @@ app.transaction('/tx', async (c) => {
 
     if (allowance < tokenPayment.amount) {
       // requires approval
-      return c.error({ message: 'Requires approval' });
+      return c.error({ message: 'You dont have enough ETH on Base' });
     }
   }
 
