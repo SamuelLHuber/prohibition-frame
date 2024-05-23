@@ -54,7 +54,7 @@ app.frame('/', async (c) => {
     intents: [
       // action is the post_url override apparently according to Frames.Transaction documentation https://frog.fm/intents/button-transaction#action-optional
       <Button.Transaction target="/tx" action="/tx-success">Mint Now</Button.Transaction>,
-      <Button.Transaction target="/approve" action="/">Approve</Button.Transaction>,
+      //<Button.Transaction target="/approve" action="/">Approve</Button.Transaction>,
     ],
   })
 })
@@ -71,7 +71,8 @@ app.transaction('/tx', async (c) => {
     sender: account!,
     srcChainId: chain?.id as ChainId,
     dstChainId: ChainId.BASE,
-    srcToken: sourceToken,
+    // srcToken: sourceToken,
+    srcToken: '0x0000000000000000000000000000000000000000',
     dstToken: '0x0000000000000000000000000000000000000000',
     slippage: 1,
     actionType: ActionType.EvmFunction,
