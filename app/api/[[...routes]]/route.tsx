@@ -206,10 +206,10 @@ app.frame('/tx-success', async (c) => {
       // do your custom logic on successful transaction here
 
       return c.res({
-        image: "https://daily.prohibition.art/nfts/amber.jpg",
-        imageAspectRatio: '1:1',
+        image: `${process.env.FRAME_URL}success.png`,
+        imageAspectRatio: '1.91:1',
         intents: [
-          <Button.Link href={`https://proxyswap.tips`}> Success, check proxyswap</Button.Link>,
+          <Button.Link href={`https://daily.prohibition.art`}> Success</Button.Link>,
         ],
       })
 
@@ -230,11 +230,18 @@ app.frame('/tx-success', async (c) => {
     })
   }
 
+  // return c.res({
+  //   image: `${process.env.FRAME_URL}waiting.png`,
+  //   imageAspectRatio: '1.91:1',
+  //   intents: [
+  //     <Button action='/end'>Refresh</Button>,
+  //   ],
+  // })
   return c.res({
-    image: "https://daily.prohibition.art/nfts/amber.jpg",
-    imageAspectRatio: '1:1',
+    image: `${process.env.FRAME_URL}end.png`,
+    imageAspectRatio: '1.91:1',
     intents: [
-      <Button action='/end'>Processing... Check Status</Button>,
+      <Button.Link href={`https://basescan.org/tx/${transactionId}`}>TX submitted</Button.Link>,
     ],
   })
 })
@@ -253,10 +260,10 @@ app.frame('/end', async (c) => {
       // do your custom logic on successful transaction here
 
       return c.res({
-        image: "https://daily.prohibition.art/nfts/amber.jpg",
-        imageAspectRatio: '1:1',
+        image: `${process.env.FRAME_URL}success.png`,
+        imageAspectRatio: '1.91:1',
         intents: [
-          <Button.Link href={`https://daily.prohibition.art`}> Success, check it</Button.Link>,
+          <Button.Link href={`https://daily.prohibition.art`}> Success</Button.Link>,
         ],
       })
 
@@ -278,10 +285,10 @@ app.frame('/end', async (c) => {
   }
 
   return c.res({
-    image: "https://daily.prohibition.art/nfts/amber.jpg",
-    imageAspectRatio: '1:1',
+    image: `${process.env.FRAME_URL}waiting.png`,
+    imageAspectRatio: '1.91:1',
     intents: [
-      <Button action='/end'>Processing... Check Status</Button>,
+      <Button action='/end'>Refresh</Button>,
     ],
   })
 })
