@@ -144,7 +144,7 @@ app.transaction('/approve', async (c) => {
       args: [account, 1n],
       cost: {
         isNative: true,
-        amount: parseEther('0.0008'),
+        amount: parseEther('0.0016'),
         tokenAddress: '0x0000000000000000000000000000000000000000',
       },
     }
