@@ -49,8 +49,8 @@ const app = new Frog<{ State: State }>({
 
 app.frame('/', async (c) => {
   return c.res({
-    image: "https://daily.prohibition.art/nfts/amber.jpg",
-    imageAspectRatio: '1:1',
+    image: `${process.env.FRAME_URL}nft.png`,
+    imageAspectRatio: '1.91:1',
     intents: [
       // action is the post_url override apparently according to Frames.Transaction documentation https://frog.fm/intents/button-transaction#action-optional
       <Button.Transaction target="/tx" action="/tx-success">Mint Now</Button.Transaction>,
@@ -83,7 +83,7 @@ app.transaction('/tx', async (c) => {
       args: [account, 1n],
       cost: {
         isNative: true,
-        amount: parseEther('0.0016'),
+        amount: parseEther(process.env.ETH_AMOUNT! as string),
         tokenAddress: '0x0000000000000000000000000000000000000000',
       },
     }
@@ -221,8 +221,8 @@ app.frame('/tx-success', async (c) => {
 
     // return a new frame where image shows failed
     return c.res({
-      image: "https://daily.prohibition.art/nfts/amber.jpg",
-      imageAspectRatio: '1:1',
+      image: `${process.env.FRAME_URL}nft.png`,
+      imageAspectRatio: '1.91:1',
       intents: [
         // action is the post_url override apparently according to Frames.Transaction documentation https://frog.fm/intents/button-transaction#action-optional
         <Button.Transaction target="/tx" action="/tx-success">Failed, Try again.</Button.Transaction>,
@@ -275,8 +275,8 @@ app.frame('/end', async (c) => {
 
     // return a new frame where image shows failed
     return c.res({
-      image: "https://daily.prohibition.art/nfts/amber.jpg",
-      imageAspectRatio: '1:1',
+      image: `${process.env.FRAME_URL}nft.png`,
+      imageAspectRatio: '1.91:1',
       intents: [
         // action is the post_url override apparently according to Frames.Transaction documentation https://frog.fm/intents/button-transaction#action-optional
         <Button.Transaction target="/tx" action="/tx-success">Failed, try again</Button.Transaction>,
